@@ -17,7 +17,7 @@ jobs:
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
     - name: Lint with Ktlint
-        run: gradle ktlint
+      run: gradle ktlint
 
     - name: Build with Gradle
       run: gradle build
