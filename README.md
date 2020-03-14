@@ -1,4 +1,4 @@
-# kotlin-spring-starter
+# kotlin-spring-boilerplate
 
 This is my personal boilerplate for Kotlin+Spring projects. 
 
