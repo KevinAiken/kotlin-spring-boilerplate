@@ -1,6 +1,6 @@
-package com.kevinaiken.starter.controller
+package com.kevinaiken.boilerplate.controller
 
-import com.kevinaiken.starter.createLogger
+import com.kevinaiken.boilerplate.createLogger
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -12,7 +12,7 @@ class HelloWorldController {
 
     private val logger = createLogger()
 
-    @GetMapping(produces = [MediaType.APPLICATION_JSON_UTF8_VALUE, MediaType.APPLICATION_JSON_VALUE])
+    @GetMapping(produces = [MediaType.APPLICATION_JSON_VALUE])
     fun getHello(): String {
         logger.info("Hello world triggered")
         return "{\"response\": \"Hello, World\"}"

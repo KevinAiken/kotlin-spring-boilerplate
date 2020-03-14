@@ -1,4 +1,4 @@
-package com.kevinaiken.starter
+package com.kevinaiken.boilerplate
 
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
@@ -25,4 +25,11 @@ fun post(url: String, token: String? = null, body: Any? = null): ResponseEntity<
     val headers = HttpHeaders()
     headers.set("Authorization", "Bearer $token")
     return restTemplate.exchange(url, HttpMethod.POST, HttpEntity<Any>(body, headers), String::class.java)
+}
+
+fun delete(url: String, token: String? = null): ResponseEntity<String> {
+    val restTemplate = RestTemplate()
+    val headers = HttpHeaders()
+    headers.set("Authorization", "Bearer $token")
+    return restTemplate.exchange(url, HttpMethod.DELETE, HttpEntity<Any>(headers), String::class.java)
 }

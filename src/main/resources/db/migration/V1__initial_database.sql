@@ -1,14 +1,12 @@
-DO $$
-BEGIN
-    CREATE ROLE example WITH NOLOGIN;
-    EXCEPTION WHEN OTHERS THEN
-      RAISE NOTICE 'not creating role example -- it already exists';
-END
+DO
+$$
+    BEGIN
+        CREATE ROLE example WITH NOLOGIN;
+    EXCEPTION
+        WHEN OTHERS THEN
+            RAISE NOTICE 'not creating role example -- it already exists';
+    END
 $$;
-
-CREATE SEQUENCE user_id_seq;
-
-alter sequence user_id_seq owner to example;
 
 create table if not exists flyway_schema_history
 (
@@ -32,16 +30,13 @@ alter table flyway_schema_history
 create index if not exists flyway_schema_history_s_idx
     on flyway_schema_history (success);
 
-create table if not exists "user"
+create table if not exists "item"
 (
-    id         integer   default nextval('user_id_seq') not null
-        constraint user_pkey
-            primary key,
-    email      varchar(200),
-    password   varchar(200),
-    createdts  timestamp default CURRENT_TIMESTAMP                not null,
-    modifiedts timestamp default CURRENT_TIMESTAMP                not null
+    name        varchar(200)                        not null
+        constraint item_pkey primary key,
+    description varchar(500)                        not null,
+    createdts   timestamp default CURRENT_TIMESTAMP not null
 );
 
-alter table "user"
+alter table "item"
     owner to example;

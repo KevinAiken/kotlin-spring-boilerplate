@@ -1,6 +1,6 @@
-package com.kevinaiken.starter.integration
+package com.kevinaiken.boilerplate.integration
 
-import com.kevinaiken.starter.get
+import com.kevinaiken.boilerplate.get
 import io.zonky.test.db.AutoConfigureEmbeddedDatabase
 import org.flywaydb.test.annotation.FlywayTest
 import org.junit.Test
@@ -18,13 +18,13 @@ import org.springframework.test.context.junit4.SpringRunner
 class HelloWorldTest {
     @LocalServerPort
     val serverPort: Int = 0
-    val baseUrl: String = "http://localhost:"
+    val baseUrl: String by lazy { "http://localhost:$serverPort/api" }
 
     @Test
     fun getHelloWorldTest() {
         JSONAssert.assertEquals(
                 "{\"response\": \"Hello, World\"}",
-                get("$baseUrl$serverPort/api/hello").body,
+                get("$baseUrl/hello").body,
                 JSONCompareMode.LENIENT
         )
     }

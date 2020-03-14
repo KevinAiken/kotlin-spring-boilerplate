@@ -1,4 +1,4 @@
-package com.kevinaiken.starter
+package com.kevinaiken.boilerplate
 
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication

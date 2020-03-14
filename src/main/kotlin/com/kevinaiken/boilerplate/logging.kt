@@ -1,4 +1,4 @@
-package com.kevinaiken.starter
+package com.kevinaiken.boilerplate
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
