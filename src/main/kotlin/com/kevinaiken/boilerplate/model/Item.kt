@@ -4,17 +4,17 @@ import org.springframework.jdbc.core.RowMapper
 import java.sql.ResultSet
 
 data class Item(
-        val name: String,
-        val description: String
+    val name: String,
+    val description: String
 )
 
 data class NewItem(
-        val name: String,
-        val description: String
+    val name: String,
+    val description: String
 )
 
 data class UpdatedItemFields(
-        val description: String
+    val description: String
 )
 
 class ItemMapper : RowMapper<Item> {

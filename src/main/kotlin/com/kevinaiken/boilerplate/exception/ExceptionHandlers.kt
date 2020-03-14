@@ -22,12 +22,12 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import java.time.Instant
 
 data class ErrorResponse(
-        val timestamp: Instant = Instant.now(),
-        val status: Int,
-        val error: String,
-        val fieldErrors: Map<String, String>? = null,
-        val message: String,
-        val path: String
+    val timestamp: Instant = Instant.now(),
+    val status: Int,
+    val error: String,
+    val fieldErrors: Map<String, String>? = null,
+    val message: String,
+    val path: String
 )
 
 enum class ErrorKind {
@@ -100,11 +100,11 @@ class RestResponseEntityExceptionHandler : ResponseEntityExceptionHandler() {
     }
 
     fun handleHttpException(
-            errorKind: ErrorKind,
-            ex: Exception,
-            request: WebRequest,
-            httpStatus: HttpStatus,
-            fieldErrors: Map<String, String>? = null
+        errorKind: ErrorKind,
+        ex: Exception,
+        request: WebRequest,
+        httpStatus: HttpStatus,
+        fieldErrors: Map<String, String>? = null
     ): ResponseEntity<Any> {
         getLoggingForError(exceptionHandlerLogger, errorKind)(
                 "Error $errorKind on ${(request as ServletWebRequest).httpMethod}: " +
@@ -126,8 +126,8 @@ class RestResponseEntityExceptionHandler : ResponseEntityExceptionHandler() {
 }
 
 private fun getLoggingForError(
-        logger: Logger,
-        errorKind: ErrorKind
+    logger: Logger,
+    errorKind: ErrorKind
 ): (String, Throwable) -> Unit = when (errorKind) {
     ErrorKind.User -> logger::info
     ErrorKind.Security -> logger::error
